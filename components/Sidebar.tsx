@@ -1,7 +1,10 @@
+import { getAllNotes } from '@/lib/redis'
 import Link from 'next/link'
-import React from 'react'
-
-export default function Sidebar() {
+import React, { Suspense } from 'react'
+import SidebarNoteList from './SidebarNoteList'
+import EditButton from './EditButton'
+import NoteListSkeleton from './NoteListSkeleton'
+export default async function Sidebar() {
   return (
     <>
       <section className="col sidebar">
@@ -12,9 +15,13 @@ export default function Sidebar() {
           </section>
         </Link>
         <section className="sidebar-menu" role="menubar">
-          123
+          <EditButton noteId={null}>New</EditButton>
         </section>
-        <nav>333</nav>
+        <nav>
+          <Suspense fallback={<NoteListSkeleton />}>
+            <SidebarNoteList />
+          </Suspense>
+        </nav>
       </section>
     </>
   )
