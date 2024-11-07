@@ -17,7 +17,6 @@ export default function NoteItemContent({ id, title, expandedChildren, children 
   const [isPending, startTransition] = useTransition()
   const [isExpanded, setIsExpanded] = useState(false)
   const isActive = id === selectedId
-  console.log(isPending, selectedId, 'isPending-----')
   const itemRef = useRef<HTMLDivElement>(null)
   const prevTitleRef = useRef(title)
 
