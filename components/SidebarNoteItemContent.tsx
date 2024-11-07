@@ -38,7 +38,7 @@ export default function NoteItemContent({ id, title, expandedChildren, children 
     <div
       ref={itemRef}
       onAnimationEnd={() => {
-        itemRef.current.classList.remove('flash')
+        itemRef.current?.classList.remove('flash')
       }}
       className={['sidebar-note-list-item', isExpanded ? 'note-expanded' : ''].join(' ')}
     >
