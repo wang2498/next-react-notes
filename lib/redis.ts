@@ -32,7 +32,7 @@ export async function getNote(uuid: string) {
 }
 
 export async function delNote(uuid: string) {
-  return redis.hset('notes', uuid)
+  return redis.hdel('notes', uuid)
 }
 
 export default redis
