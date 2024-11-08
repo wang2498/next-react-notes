@@ -1,9 +1,13 @@
+import { locales } from '@/config'
 import './style.css'
 import Sidebar from '@/components/Sidebar'
 
-export default async function RootLayout({ children }: { children: React.ReactElement }) {
+export function generateStaticParams() {
+  return locales.map((lng) => ({ lng }))
+}
+export default async function RootLayout({ children, params: { lng } }: { children: React.ReactElement; params: { lng: string } }) {
   return (
-    <html lang="en">
+    <html lang={lng}>
       <body>
         <div className="container">
           <div className="main">

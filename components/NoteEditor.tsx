@@ -4,15 +4,15 @@ import { useFormState } from 'react-dom'
 import NotePreview from './NotePreview'
 import SaveButton from './SaveButton'
 import DeleteButton from './DeleteButton'
-import { deleteNote, saveNote } from '@/app/actions'
+import { deleteNote, saveNote, SaveNoteResult } from '@/actions'
 type Props = {
   noteId: string | null
   initialTitle: string
   initialBody: string
 }
-const initialState = {
+const initialState: SaveNoteResult = {
   message: '',
-  errors: null
+  errors: null,
 }
 export default function NoteEditor({ noteId, initialTitle, initialBody }: Props) {
   const [title, setTitle] = useState(initialTitle)

@@ -4,7 +4,7 @@ import { sleep } from '@/lib/utils'
 import SidebarNoteItemHeader from './SidebarNoteItemHeader'
 
 export default async function NoteList() {
-  await sleep(3000)
+  // await sleep(3000)
   const notes = await getAllNotes()
   console.log(notes, 'note-----sss')
   if (Object.entries(notes).length == 0) {
