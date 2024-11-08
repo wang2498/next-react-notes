@@ -102,8 +102,8 @@ select {
   --white: #fff;
   --yellow: #fffae1;
 
-  /* --outline-box-shadow: none; */
-  --outline-box-shadow: 0 0 0 2px var(--outline-blue);
+  --outline-box-shadow: none;
+  /* --outline-box-shadow: 0 0 0 2px var(--outline-blue); */
   --outline-box-shadow-contrast: 0 0 0 2px var(--navy-blue);
 
   /* Fonts */
@@ -261,7 +261,7 @@ hr {
 }
 
 ul.notes-list {
-  padding: 16px 0;
+  padding: 16px;
 }
 .notes-list > li {
   padding: 0 16px;

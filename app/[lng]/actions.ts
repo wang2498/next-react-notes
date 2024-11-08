@@ -16,8 +16,8 @@ export interface FormData {
 }
 
 export type SaveNoteResult = {
-  msg: string
-  errors: string | null
+  message: string
+  errors: { message: string }[] | null
 }
 
 export type NoteData = {
@@ -25,7 +25,7 @@ export type NoteData = {
   content: FormDataEntryValue | null
   updateTime: Date
 }
-export const saveNote = async (prevState: SaveNoteResult, formData: FormData) => {
+export const saveNote = async (prevState: SaveNoteResult, formData: FormData): Promise<SaveNoteResult> => {
   const noteId = formData.get('noteId')
   const note = {
     title: formData.get('title'),
@@ -37,8 +37,8 @@ export const saveNote = async (prevState: SaveNoteResult, formData: FormData) =>
   console.log(validated, 'validated---')
   if (!validated.success) {
     return {
-      msg: '',
-      errors: validated.error.issues.map((i) => i.message).join(';'),
+      message: '',
+      errors: validated.error.issues,
     }
   }
   await sleep(2000)
@@ -58,7 +58,7 @@ export const saveNote = async (prevState: SaveNoteResult, formData: FormData) =>
   }
 }
 
-export const deleteNote = async (prevState: SaveNoteResult, formData: FormData) => {
+export const deleteNote = async (prevState: SaveNoteResult, formData: FormData): Promise<SaveNoteResult> => {
   const noteId = formData.get('noteId')
   if (!noteId) {
     return { message: 'Delete Fail!', errors: null }
