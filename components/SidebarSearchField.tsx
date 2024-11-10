@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslation } from '@/app/i18n/client'
 import { usePathname, useRouter } from 'next/navigation'
 import { useTransition } from 'react'
 
@@ -7,7 +8,8 @@ function Spinner({ active = true }) {
   return <div className={['spinner', active && 'spinner--active'].join(' ')} role="progressbar" aria-busy={active ? 'true' : 'false'} />
 }
 
-export default function SidebarSearchField() {
+export default function SidebarSearchField({ lng }: { lng: string }) {
+  const { t } = useTranslation(lng, 'basic')
   const { replace } = useRouter()
   const pathname = usePathname()
   const [isPending, starTransition] = useTransition()
@@ -27,7 +29,7 @@ export default function SidebarSearchField() {
       <label className="offscreen" htmlFor="sidebar-search-input">
         Search for a note by title
       </label>
-      <input id="sidebar-search-input" placeholder="Search" type="text" onChange={(e) => handleSearch(e.target.value)} />
+      <input id="sidebar-search-input" placeholder={t('search')} type="text" onChange={(e) => handleSearch(e.target.value)} />
       <Spinner active={isPending} />
     </div>
   )

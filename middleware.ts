@@ -27,7 +27,6 @@ export function middleware(request: NextRequest) {
   const locale = getLocale(request)
   request.nextUrl.pathname = `/${locale}${pathname}`
   // 默认语言不重定向
-  console.log(locale, defaultLocale, request.nextUrl, '--f-f-f-')
   if (locale == defaultLocale) {
     return NextResponse.rewrite(request.nextUrl)
   }

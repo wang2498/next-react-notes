@@ -1,10 +1,12 @@
 import Link from 'next/link'
 import React, { Suspense } from 'react'
+import { useTranslation } from '@/app/i18n/index'
+
 import SidebarNoteList from './SidebarNoteList'
 import EditButton from './EditButton'
 import NoteListSkeleton from './NoteListSkeleton'
 import SidebarSearchField from './SidebarSearchField'
-import { useTranslation } from '@/app/i18n/index'
+import SidebarImport from './SidebarImport'
 export default async function Sidebar({ lng }: { lng: string }) {
   const { t } = await useTranslation(lng)
   return (
@@ -17,14 +19,15 @@ export default async function Sidebar({ lng }: { lng: string }) {
           </section>
         </Link>
         <section className="sidebar-menu" role="menubar">
-          <SidebarSearchField />
-          <EditButton noteId={null}>{t("new")}</EditButton>
+          <SidebarSearchField lng={lng} />
+          <EditButton noteId={null}>{t('new')}</EditButton>
         </section>
         <nav>
           <Suspense fallback={<NoteListSkeleton />}>
             <SidebarNoteList />
           </Suspense>
         </nav>
+        <SidebarImport />
       </section>
     </>
   )
