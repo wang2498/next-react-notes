@@ -1,7 +1,8 @@
 import { locales } from '@/config'
 import './style.css'
 import Sidebar from '@/components/Sidebar'
-import Footer from '@/components/Footer';
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
 
 export function generateStaticParams() {
   return locales.map((lng) => ({ lng }))
@@ -11,11 +12,12 @@ export default async function RootLayout({ children, params: { lng } }: { childr
     <html lang={lng}>
       <body>
         <div className="container">
+          <Header />
           <div className="main">
-            <Sidebar lng={lng}/>
+            <Sidebar lng={lng} />
             <section className="col note-viewer">{children}</section>
           </div>
-          <Footer lng={lng}/>
+          <Footer lng={lng} />
         </div>
       </body>
     </html>

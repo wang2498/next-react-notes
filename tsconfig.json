@@ -21,6 +21,7 @@
     "paths": {
       "@/*": ["./*"],
       "@/actions": ["app/[lng]/actions.ts"],
+      "auth": ["./auth"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "middleware.ts"],
