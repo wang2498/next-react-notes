@@ -107,10 +107,8 @@ select {
   --outline-box-shadow-contrast: 0 0 0 2px var(--navy-blue);
 
   /* Fonts */
-  --sans-serif: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Ubuntu, Helvetica, sans-serif;
-  --monospace: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
-    monospace;
+  --sans-serif: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, Helvetica, sans-serif;
+  --monospace: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
 
 html {
@@ -644,7 +642,21 @@ ul.notes-list {
   width: 1px;
   position: absolute;
 }
-
+.sign-btn {
+  background: var(--primary-blue);
+  color: var(--white);
+  border: none;
+  margin-inline-start: 6px;
+  transition: all 0.2s ease-in-out;
+  border-radius: 100px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 20px 4px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 20px;
+  margin-left: 10px;
+}
 /* ---------------------------------------------------------------------------*/
 @keyframes spin {
   to {
