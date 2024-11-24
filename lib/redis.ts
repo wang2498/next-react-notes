@@ -16,12 +16,14 @@ export async function getAllNotes() {
   return await redis.hgetall('notes')
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function addNote(data: any) {
   const uuid = Date.now().toString()
   await redis.hset('notes', uuid, data)
   return uuid
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function updateNote(uuid: string, data: any) {
   await redis.hset('notes', uuid, data)
 }
@@ -36,14 +38,13 @@ export async function delNote(uuid: string) {
 }
 
 export async function addUser(username: string, password: string) {
-  await redis.hset('users', [username], password)
+  await redis.hset('users', username, password);
   return {
     name: username,
     username,
-  }
+  };
 }
-
-export async function getUser(username, password) {
+export async function getUser(username: string, password: string) {
   const passwordFromDB = await redis.hget("users", username);
   if (!passwordFromDB) return 0;
   if (passwordFromDB !== password) return 1

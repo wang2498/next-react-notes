@@ -19,7 +19,7 @@ export default function NoteEditor({ noteId, initialTitle, initialBody }: Props)
   const [body, setBody] = useState(initialBody)
 
   const [saveState, saveFormAction] = useFormState(saveNote, initialState)
-  const [delState, delFormAction] = useFormState(deleteNote, initialState)
+  const [, delFormAction] = useFormState(deleteNote, initialState)
   const isDraft = !noteId
   useEffect(() => {
     if (saveState.errors) {
