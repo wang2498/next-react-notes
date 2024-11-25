@@ -7,8 +7,8 @@ const Footer = async ({ lng }: { lng: string }) => {
   const { t } = await useTranslation(lng, 'footer')
   return (
     <footer style={{ margin: 20 }}>
-      <Trans i18nKey="languageSwitcher" t={t}>
-        Switch from <strong>{{ lng }}</strong> to:{' '}
+      <Trans i18nKey="languageSwitcher" t={t} values={{ lng }}>
+        Switch from <strong>{lng}</strong> to:{' '}
       </Trans>
       {locales
         .filter((l: string) => lng !== l)
@@ -23,4 +23,5 @@ const Footer = async ({ lng }: { lng: string }) => {
     </footer>
   )
 }
+
 export default Footer
