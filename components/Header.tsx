@@ -1,7 +1,7 @@
 import { signIn, signOut, auth } from 'auth'
 import Link from 'next/link'
 
-function SignIn({ provider, ...props }) {
+function SignIn({ provider, ...props }: any) {
   console.log(provider, 'provider----')
   return (
     <form
@@ -17,7 +17,7 @@ function SignIn({ provider, ...props }) {
   )
 }
 
-function SignOut(props) {
+function SignOut(props: any) {
   return (
     <form
       action={async () => {
@@ -40,7 +40,7 @@ export default async function Header() {
       <Link href="/client">Client Side Component</Link>
       {session?.user ? (
         <span style={{ display: 'flex', alignItems: 'center', fontSize: 20 }}>
-          <img width="20px" height="20px" src={session?.user.image} alt="" />
+          <img width="20px" height="20px" src={session?.user.image as string} alt="" />
           {session?.user.name}
           <SignOut />
         </span>
